@@ -18,7 +18,7 @@
 <script>
 
 import { ref } from 'vue';
-import converter from 'number-to-words'
+// import converter from 'number-to-words'
 
 export default {
 
@@ -28,61 +28,55 @@ setup(props, ctx) {
 
   function convert() {
     outputtedPattern.value = translatePattern(message.value);
-      
   }
 
   function translatePattern(pattern) {
-
+    for (let i = 0; i < pattern.length; i++) {
+      pattern = translateLine(message.value.split(/\r?\n/));
+    }
+    return pattern;
   }
 
   function translateLine(line) {
-    console.log("here loop through line");
-    for (let i = 0; i < message.value.length; i++){
-
-      let splitAtRow = message.value.split("Row" || "Round");
-      outputtedPattern.value = splitAtRow;
-
-
+    for (let i = 0; i < line.length; i++){
+      line = translateInstruction(message.value.split("Row" || "Round"));
     }
+    return line;
   }
 
   function translateInstruction(instruction) {
-    console.log("here loop through instruction");
-    let splitAtComma = message.value.split(",");
-
-    for (let i = 0; i < splitAtComma.length; i++){
-      console.log("here");
-      outputtedPattern.value = converter.toWords(message.value);
+    for (let i = 0; i < instruction.length; i++){
+      instruction = translateToken(message.value.split(","));
+      // instruction = translateToken(converter.toWords(message.value));
     }
+    return instruction;
   }
 
   function translateToken(token) {
-    console.log("here loop through token");
-    for (let i = 0; i < message.value.length; i++) {
-      let instruction = document.getElementById("input").value;
-      if (instruction === "ch") {
-        instruction === "chain"
+    for (let i = 0; i < token.length; i++) {
+      if (token === "ch") {
+        token === "chain"
       }
-      if (instruction === "sc") {
-        instruction === "single crochet"
+      if (token === "sc") {
+        token === "single crochet"
       }
-      if (instruction === "dc") {
-        instruction === "single crochet"
+      if (token === "dc") {
+        token === "single crochet"
       }
-      if (instruction === "sc") {
-        instruction === "double crochet"
+      if (token === "sc") {
+        token === "double crochet"
       }
-      if (instruction === "trc") {
-        instruction === "treble crochet"
+      if (token === "trc") {
+        token === "treble crochet"
       }
-      if (instruction === "ss") {
-        instruction === "slip stitch"
+      if (token === "ss") {
+        token === "slip stitch"
       }
-      if (instruction === "sp") {
-        instruction === "space"
+      if (token === "sp") {
+        token === "space"
       }
-      outputtedPattern = instruction;
     }
+    return token;
   }
 
 

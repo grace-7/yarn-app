@@ -1,6 +1,6 @@
 Basic Granny Square
 
-Make a magic ring 
+Make a magic ring. 
 
 Round 1 - Ch 5, 3 dc into ring, ch 2, 3 dc into ring, ch 2, 3 dc into ring, ch 2, 2 dc, ss into 3rd ch of beginning ch 5 to join, and pull on the yarn tail to close the ring tight.
 
@@ -10,8 +10,6 @@ Round 3 - Ss into ch 2 sp, ch 5, 3 dc into same sp, *ch 1, 3 dc into next ch 1 s
 
 Round 4-25 - Repeat round 3.
 
-1: Chain five
-    repeat from * to * to join
 
 Basic blanket in Single Crochet
 
