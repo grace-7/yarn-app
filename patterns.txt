@@ -18,3 +18,32 @@ Row 2 - Sc in 2nd loop from hook, 310 sc, ch 1, turn
 Row 3-365 - 310 sc, ch 1, turn
 
 
+
+
+
+
+
+3 dc into same sp
+
+-> ????
+
+Three double-crochet into same space
+
+
+translateLine <- Round 1 - Ch 5, 3 dc into ring, ch 2, 3 dc into ring, ch 2, 3 dc into ring, ch 2, 2 dc, ss into 3rd ch of beginning ch 5 to join, and pull on the yarn tail to close the ring tight.
+    translateInstruction <- Round 1 - Ch 5
+        translateToken <- Round
+        translateToken <- 1
+        translateToken <- -
+        translateToken <- Ch
+        translateToken <- 5
+    translateInstruction <- 3 dc into ring
+        translateToken <- 3
+        translateToken <- dc
+        translateToken <- into
+        translateToken <- ring
+    translateInstruction <- ch 2
+        ...
+    translateInstruction <- 3 dc into ring
+        ...
+    ...

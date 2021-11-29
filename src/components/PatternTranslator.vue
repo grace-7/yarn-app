@@ -27,56 +27,63 @@ setup(props, ctx) {
   let outputtedPattern = ref("");
 
   function convert() {
+    translatePattern(message.value).forEach(element => console.log(element));
+
     outputtedPattern.value = translatePattern(message.value);
+
+    // translatePattern(message.value).forEach(element => outputtedPattern.value += element);
   }
 
+  // function testPattern(){
+  //   const patternTest = "Row 1 - Ch 311\nRow 2 - Sc in 2nd loop from hook, 310 sc, ch 1, turn \nRow 3-365 - 310 sc, ch 1, turn"
+  //   translatePattern(patternTest);
+  // }
+
   function translatePattern(pattern) {
-    for (let i = 0; i < pattern.length; i++) {
+    for (let i = 0; i < translateLine(pattern).length; i++) {
       pattern = translateLine(message.value.split(/\r?\n/));
     }
-    return pattern;
+      return pattern;
   }
 
   function translateLine(line) {
-    for (let i = 0; i < line.length; i++){
-      line = translateInstruction(message.value.split("Row" || "Round"));
+    for (let i = 0; i < translateInstruction(line).length; i++){
+      line = translateInstruction(message.value.split("-"));
     }
-    return line;
+      return line;
+    
   }
 
   function translateInstruction(instruction) {
-    for (let i = 0; i < instruction.length; i++){
+    for (let i = 0; i < translateToken(instruction).length; i++){
       instruction = translateToken(message.value.split(","));
       // instruction = translateToken(converter.toWords(message.value));
     }
-    return instruction;
+      return instruction;
   }
 
   function translateToken(token) {
     for (let i = 0; i < token.length; i++) {
-      if (token === "ch") {
-        token === "chain"
+      if (token.toUpperCase === "CH") {
+        token = "chain"
+        }
+      if (token.toUpperCase === "SC") {
+        token = "single crochet"
       }
-      if (token === "sc") {
-        token === "single crochet"
+      if (token.toUpperCase === "DC") {
+        token = "double crochet"
       }
-      if (token === "dc") {
-        token === "single crochet"
+      if (token.toUpperCase === "TRB") {
+        token = "treble crochet"
       }
-      if (token === "sc") {
-        token === "double crochet"
+      if (token.toUpperCase === "SS") {
+        token = "slip stitch"
       }
-      if (token === "trc") {
-        token === "treble crochet"
-      }
-      if (token === "ss") {
-        token === "slip stitch"
-      }
-      if (token === "sp") {
-        token === "space"
+      if (token.toUpperCase === "SP") {
+        token = "space"
       }
     }
-    return token;
+      return token;
   }
 
 
@@ -87,6 +94,7 @@ setup(props, ctx) {
   return {
     message,
     outputtedPattern, 
+    // testPattern,
     convert,
     saveButton
   }
@@ -112,6 +120,12 @@ setup(props, ctx) {
 .input {
   display: flex;
   flex-direction: column;
+}
+
+.outputpattern {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
 }
 
 
