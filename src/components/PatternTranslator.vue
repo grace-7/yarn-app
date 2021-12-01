@@ -20,6 +20,8 @@
 import { ref } from 'vue';
 // import converter from 'number-to-words'
 
+// import {createPattern, createSteps} from '../pattern';
+
 export default {
 
 setup(props, ctx) {
@@ -34,12 +36,8 @@ setup(props, ctx) {
     // translatePattern(message.value).forEach(element => outputtedPattern.value += element);
   }
 
-  // function testPattern(){
-  //   const patternTest = "Row 1 - Ch 311\nRow 2 - Sc in 2nd loop from hook, 310 sc, ch 1, turn \nRow 3-365 - 310 sc, ch 1, turn"
-  //   translatePattern(patternTest);
-  // }
-
   function translatePattern(pattern) {
+    translateToken()
     for (let i = 0; i < translateLine(pattern).length; i++) {
       pattern = translateLine(message.value.split(/\r?\n/));
     }
