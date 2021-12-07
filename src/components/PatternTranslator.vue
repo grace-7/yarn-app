@@ -7,6 +7,43 @@
   <button @click="convert()" id="botConvert" class="btn">
     Convert
   </button>
+
+  <p> Pattern Name </p>
+  <input id="inputFeild" v-model="patternName" placeholder="Pattern Name">
+  <p> Project Type </p>
+  <input id="inputFeild" v-model="projectType" placeholder="Project Type">
+  <p> Yarn Length </p>
+  <input id="inputFeild" v-model="yarnLength" placeholder="Yarn Length">
+  <br>
+
+  <p>Yarn Weight</p>
+  <select v-model="selected">
+    <option disabled value="">Please select one</option>
+    <option value="0">0: Lace</option>
+    <option value="1">1: Super Fine</option>
+    <option value="2">2: Fine</option>
+    <option value="3">3: Light</option>
+    <option value="4">4: Medium</option>
+    <option value="5">5: Bulky</option>
+    <option value="6">6: Super Bulky</option>
+    <option value="7">7: Jumbo</option>
+  </select>
+  <br>
+
+  <p>Fiber Type</p>
+  <select v-model="selected">
+    <option disabled value="">Please select one</option>
+    <option value="acrylic">Acrylic</option>
+    <option value="alpaca">Alpaca</option>
+    <option value="cotton">Cotton</option>
+    <option value="merinoWool">Merino Wool</option>
+    <option value="organic">Organic</option>
+    <option value="silk">Silk</option>
+    <option value="wool">Wool</option>
+    <option value="other">Other</option>
+  </select>
+  <br>
+
   <button @click="saveButton()" class="btn">
     Save
   </button>
@@ -116,6 +153,18 @@ setup(props, ctx) {
 }
 
 .input {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputFeild {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
   display: flex;
   flex-direction: column;
 }
