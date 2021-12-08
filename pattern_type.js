@@ -8,7 +8,6 @@ const Pattern = {
     length = 1000,
     fiber = "cotton"
   },
-  hookSize = 3,
   steps = [
     {
       roundNumber = 1,

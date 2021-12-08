@@ -17,7 +17,7 @@
   <br>
 
   <p>Yarn Weight</p>
-  <select v-model="selected">
+  <select v-model="yarnWeight">
     <option disabled value="">Please select one</option>
     <option value="0">0: Lace</option>
     <option value="1">1: Super Fine</option>
@@ -31,7 +31,7 @@
   <br>
 
   <p>Fiber Type</p>
-  <select v-model="selected">
+  <select v-model="fiberType">
     <option disabled value="">Please select one</option>
     <option value="acrylic">Acrylic</option>
     <option value="alpaca">Alpaca</option>
@@ -57,78 +57,38 @@
 import { ref } from 'vue';
 // import converter from 'number-to-words'
 
-// import {createPattern, createSteps} from '../pattern';
+import { createSteps } from '../pattern';
 
 export default {
 
 setup(props, ctx) {
   let message = ref("");
   let outputtedPattern = ref("");
+  let patternName = ref("");
+  let projectType = ref("");
+  let yarnLength = ref("");
+  let yarnWeight = ref("");
+  let fiberType = ref("");
 
   function convert() {
-    translatePattern(message.value).forEach(element => console.log(element));
 
-    outputtedPattern.value = translatePattern(message.value);
+    outputtedPattern.value = createSteps(message.value);
 
-    // translatePattern(message.value).forEach(element => outputtedPattern.value += element);
-  }
-
-  function translatePattern(pattern) {
-    translateToken()
-    for (let i = 0; i < translateLine(pattern).length; i++) {
-      pattern = translateLine(message.value.split(/\r?\n/));
-    }
-      return pattern;
-  }
-
-  function translateLine(line) {
-    for (let i = 0; i < translateInstruction(line).length; i++){
-      line = translateInstruction(message.value.split("-"));
-    }
-      return line;
-    
-  }
-
-  function translateInstruction(instruction) {
-    for (let i = 0; i < translateToken(instruction).length; i++){
-      instruction = translateToken(message.value.split(","));
-      // instruction = translateToken(converter.toWords(message.value));
-    }
-      return instruction;
-  }
-
-  function translateToken(token) {
-    for (let i = 0; i < token.length; i++) {
-      if (token.toUpperCase === "CH") {
-        token = "chain"
-        }
-      if (token.toUpperCase === "SC") {
-        token = "single crochet"
-      }
-      if (token.toUpperCase === "DC") {
-        token = "double crochet"
-      }
-      if (token.toUpperCase === "TRB") {
-        token = "treble crochet"
-      }
-      if (token.toUpperCase === "SS") {
-        token = "slip stitch"
-      }
-      if (token.toUpperCase === "SP") {
-        token = "space"
-      }
-    }
-      return token;
   }
 
 
   function saveButton() {
       ctx.emit('saveButton')
-    }
+  }
 
   return {
     message,
     outputtedPattern, 
+    patternName,
+    projectType,
+    yarnLength,
+    yarnWeight,
+    fiberType,
     // testPattern,
     convert,
     saveButton

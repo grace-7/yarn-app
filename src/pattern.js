@@ -4,7 +4,19 @@
  * @param {string} rawText raw text for a pattern coming from the user
  */
 function createSteps(rawText) {
-  console.log(rawText);
+  // let number = rawText.replace(/\D/g, "");
+  // if (rawText === number.value) {
+  //   roundNumber = number;
+  // }
+
+  // split rawText up by line, and only get the non-empty lines
+  let lines = rawText.split("\n").filter((line) => line.length > 0);
+
+  for (let i = 0; i < lines.length; i++) {
+    let instructions = rawText.split(",").filter((iLine) => iLine.length > 0);
+    console.log(instructions);
+  }
+
   return [
     {
       roundNumber: 1,
@@ -26,8 +38,8 @@ function createSteps(rawText) {
  * @param {object} param0 Object to create a pattern with, has name,
  *    finished project, yarn info, hook size, and the steps created from createSteps
  */
-function createPattern({ patternName, project, yarn, hookSize, steps }) {
-  console.log({ patternName, project, yarn, hookSize, steps });
+function createPattern({ patternName, project, yarn, steps }) {
+  console.log({ patternName, project, yarn, steps });
   return {
     name: "Pattern name",
     project: "hat",
@@ -36,7 +48,6 @@ function createPattern({ patternName, project, yarn, hookSize, steps }) {
       length: 1000,
       fiber: "cotton",
     },
-    hookSize: 3,
     steps: [
       {
         roundNumber: 1,
